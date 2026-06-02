@@ -1,6 +1,10 @@
 -- naysayer.nvim - a Neovim colorscheme inspired by Emacs naysayer-theme
 -- Author: made by Rostislav Sobolevskiy based on Nick Aversano's Emacs theme
 
+-- Telescope search -> <leader>sn + pncnl (qiekn's personal config)
+
+-- stylua: ignore start
+
 local colors = {
   yellow     = "#E6DB74",
   orange     = "#FD971F",
@@ -11,11 +15,11 @@ local colors = {
   cyan       = "#A1EFE4",
   violet     = "#AE81FF",
 
-  background = "#062625",
-  gutter     = "#062625",
-  selection  = "#0000ff",
+  background = "#062626",
+  gutter     = "#062626",
+  selection  = "#23444b", -- or #183848
   text       = "#d0b892",
-  comment    = "#53d549",
+  comment    = "#40C040",
   punctuation= "#8cde94",
   keyword    = "#ffffff",
   variable   = "#d0b892",
@@ -90,21 +94,36 @@ set(0, "rainbowcol6", { fg = colors.red })
 set(0, "StatusLine",        { fg = colors.lualine_fg, bg = colors.lualine_bg })
 set(0, "StatusLineNC",      { fg = colors.line_fg, bg = colors.gutter })
 
+-- TabLine
+set(0, "TabLine",    { fg = colors.line_fg, bg = colors.background })             -- inactive
+set(0, "TabLineSel", { fg = colors.white,   bg = colors.highlight, bold = true }) -- current active
+
+-- StatusLine
+set(0, "MiniStatuslineFilename", { link = "StatusLine" })
+set(0, "MiniStatuslineFileinfo", { link = "StatusLine" })
+set(0, "MiniStatuslineDevinfo",  { link = "StatusLine" })
+
+-- Neo-tree source selector (winbar tabs)
+set(0, "NeoTreeTabActive",            { fg = colors.white,      bg = colors.highlight, bold = true })
+set(0, "NeoTreeTabInactive",          { fg = colors.line_fg,    bg = colors.background })
+set(0, "NeoTreeTabSeparatorActive",   { fg = colors.highlight,  bg = colors.highlight })
+set(0, "NeoTreeTabSeparatorInactive", { fg = colors.background, bg = colors.background })
+
 -- Treesitter highlights
-set(0, "@comment",        { link = "Comment" })
-set(0, "@string",         { link = "String" })
-set(0, "@number",         { link = "Number" })
-set(0, "@boolean",        { link = "Boolean" })
-set(0, "@constant",       { link = "Constant" })
-set(0, "@function",       { link = "Function" })
+set(0, "@comment",          { link = "Comment" })
+set(0, "@string",           { link = "String" })
+set(0, "@number",           { link = "Number" })
+set(0, "@boolean",          { link = "Boolean" })
+set(0, "@constant",         { link = "Constant" })
+set(0, "@function",         { link = "Function" })
 set(0, "@function.builtin", { link = "Function" })
-set(0, "@variable",       { link = "Identifier" })
-set(0, "@type",           { link = "Type" })
-set(0, "@keyword",        { link = "Keyword" })
+set(0, "@variable",         { link = "Identifier" })
+set(0, "@type",             { link = "Type" })
+set(0, "@keyword",          { link = "Keyword" })
 set(0, "@keyword.function", { link = "Keyword" })
-set(0, "@field",          { link = "Identifier" })
-set(0, "@property",       { link = "Identifier" })
-set(0, "@parameter",      { link = "Identifier" })
+set(0, "@field",            { link = "Identifier" })
+set(0, "@property",         { link = "Identifier" })
+set(0, "@parameter",        { link = "Identifier" })
+-- stylua: ignore end
 
 return colors
-
